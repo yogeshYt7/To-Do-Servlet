@@ -49,6 +49,7 @@ public class AddTask extends HttpServlet {
 			req.getSession().setAttribute("user", dao.findByEmail(dto.getEmail()));
 
 			resp.getWriter().print("<h1 align='center' style='color:green'>Task Added Success</h1>");
+			req.setAttribute("list", dto.getTasks());
 			req.getRequestDispatcher("Home.jsp").include(req, resp);
 		}
 	}

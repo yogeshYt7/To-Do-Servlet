@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDao;
+import dto.UserDto;
 import service.UserService;
 
 @WebServlet("/login")
@@ -21,8 +22,10 @@ public class Login extends HttpServlet {
 		UserService service = new UserService();
 		if (service.login(email, password)) {
 			UserDao dao=new UserDao();
-			req.getSession().setAttribute("user",dao.findByEmail(email));
+			UserDto dto=dao.findByEmail(email);
+			req.getSession().setAttribute("user",dto);
 			resp.getWriter().print("<h1 align='center' style='color:green'>Login Success</h1>");
+			req.setAttribute("list", dto.getTasks());
 			req.getRequestDispatcher("Home.jsp").include(req, resp);
 		} else {
 			resp.getWriter().print("<h1 align='center' style='color:red'>Invalid Credentials</h1>");

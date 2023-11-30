@@ -1,3 +1,5 @@
+<%@page import="dto.Task"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -15,10 +17,13 @@ div {
 <title>To-do Home</title>
 </head>
 <body>
+<%
+List<Task>list=(List<Task>)request.getAttribute("list");
+%>
 	<div>
 		<h1>To-do Home</h1>
 		<table border="1px solid black">
-			<tr>
+		<tr>
 				<th>Task Name</th>
 				<th>Task Description</th>
 				<th>Date Created</th>
@@ -26,14 +31,19 @@ div {
 				<th>Delete</th>
 				<th>Edit</th>
 			</tr>
+			<%
+			if(list!=null)
+			{
+			 for(Task task:list){ %>
 			<tr>
-				<td>Swimming</td>
-				<td>Water</td>
-				<td>12-nov-2023</td>
-				<td>Complete</td>
-				<td><button>Delete</button></td>
-				<td><button>Edit</button></td>
+				<th><%=task.getName()%></th>
+				<th><%=task.getDescription()%></th>
+				<th><%=task.getCreatedTime()%></th>
+				<th><%=task.isStatus()%></th>
+				<th><button>Delete</button></th>
+				<th><button>Edit</button></th>
 			</tr>
+		<% 	}} %>
 		</table>
 		<br>
 		<a href="session-add-task"><button>Add Task</button></a><br>
