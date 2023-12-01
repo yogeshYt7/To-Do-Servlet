@@ -34,13 +34,13 @@ div {
 				<th>Delete</th>
 				<th>Edit</th>
 			</tr>
-		
+			<%-- Making sure list is present and iterating over it --%>
 			<%
 			if (list != null) {
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM YYYY hh:mm");
 				for (Task task : list) {
 			%>
-			
+			<%--we can not use one tag inside another so opened for loop  --%>
 			<tr>
 				<th><%=task.getName()%></th>
 				<th><%=task.getDescription()%></th>
@@ -51,12 +51,12 @@ div {
 					%> Completed <%
 					} else {
 					%>
-					
+					<%-- Url rewriting for carrying primary key --%>
 					<a href="change-status?id=<%=task.getId()%>"><button>Complete</button></a> <%
  }
  %>
 				</th>
-				<th><button>Delete</button></th>
+				<th><a href="delete?id=<%=task.getId()%>"><button>Delete</button></a></th>
 				<th><button>Edit</button></th>
 			</tr>
 			<%-- Closing for loop and if here --%>
