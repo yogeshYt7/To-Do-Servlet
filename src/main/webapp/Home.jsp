@@ -57,7 +57,7 @@ div {
  %>
 				</th>
 				<th><a href="delete?id=<%=task.getId()%>"><button>Delete</button></a></th>
-				<th><button>Edit</button></th>
+				<th><a href="edit?id=<%=task.getId()%>"><button>Edit</button></a></th>
 			</tr>
 			<%-- Closing for loop and if here --%>
 			<%

@@ -24,7 +24,7 @@ public class UserDto {
 	LocalDate dob;
 	String gender;
 	int age;
-	
+	//For mapping
 	@OneToMany
 	List<Task> tasks;
 }

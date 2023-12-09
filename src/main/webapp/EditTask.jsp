@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+<%@page import="dto.Task"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Task</title>
+<title>Edit Task</title>
 <style>
 div {
 	display: flex;
@@ -14,25 +15,27 @@ div {
 </head>
 <body>
 <div>
-		<h1>Add Task</h1>
+<%Task task=(Task)request.getAttribute("task"); %>
+		<h1>Edit Task</h1>
 		<!-- action is address where the values are carried to  -->
-		<form action="add-task" method="post">
+		<form action="update-task" method="post">
 			<fieldset>
 				<legend>Enter Task here,</legend>
+				<input type="hidden" name="id" value="<%=task.getId()%>">
 				<table>
 					<tr>
 						<th>Task Name: </th>
 						<!-- Name attribute is Complusory to carry value  -->
-						<th><input type="text" name="tname"></th>
+						<th><input type="text" value="<%=task.getName()%>" name="tname"></th>
 					</tr>
 					<tr>
 						<th>Task Description: </th>
 						<!-- Name attribute is Complusory to carry value  -->
-						<th><input type="text" name="tdescription"></th>
+						<th><input type="text" value="<%=task.getDescription()%>" name="tdescription"></th>
 					</tr>
 					<tr>
 						<!-- Clicking this button will carry the values to action Location  -->
-						<th><button>Add</button></th>
+						<th><button>Update</button></th>
 						<th><button type="reset">Cancel</button></th>
 					</tr>
 				</table>

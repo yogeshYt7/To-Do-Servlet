@@ -4,13 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <!-- This is For Loading the File when we run project  -->
   <welcome-file-list>
   <welcome-file>Login.html</welcome-file>
-  
   </welcome-file-list>
+  <!-- If any 404 Error it will redirected to below page -->
   <error-page>
   <error-code>404</error-code>
-  <location>/error.html</location>
-  
+  <location>/404.html</location>
   </error-page>
 </web-app>
